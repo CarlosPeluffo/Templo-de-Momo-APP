@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.peluffo.eltemplodemomo.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/nav_noticia"
+        android:name="com.peluffo.eltemplodemomo.ui.noticia.NoticiaFragment"
+        android:label="@string/noticias"
+        tools:layout="@layout/fragment_noticia" >
+        <action
+            android:id="@+id/action_nav_noticia_to_noticiaDetalleFragment"
+            app:destination="@id/nav_noticiaDetalle" />
+        <action
+            android:id="@+id/action_nav_noticia_to_noticiaJuegoFragment"
+            app:destination="@id/nav_noticiaJuego" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_logout"
+        android:name="com.peluffo.eltemplodemomo.ui.logout.LogoutFragment"
+        android:label="@string/logout"
+        tools:layout="@layout/fragment_logout" />
+    <fragment
+        android:id="@+id/nav_perfil"
+        android:name="com.peluffo.eltemplodemomo.ui.perfil.PerfilFragment"
+        android:label="@string/perfil"
+        tools:layout="@layout/fragment_perfil" />
+    <fragment
+        android:id="@+id/nav_comentario"
+        android:name="com.peluffo.eltemplodemomo.ui.comentario.ComentarioFragment"
+        android:label="@string/comentarios"
+        tools:layout="@layout/fragment_comentario" >
+        <action
+            android:id="@+id/action_nav_comentario_to_noticiaDetalleFragment"
+            app:destination="@id/nav_noticiaDetalle" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_noticiaDetalle"
+        android:name="com.peluffo.eltemplodemomo.ui.noticia.NoticiaDetalleFragment"
+        android:label="@string/noticia"
+        tools:layout="@layout/fragment_noticia_detalle" >
+        <action
+            android:id="@+id/action_noticiaDetalleFragment_to_nav_comentario"
+            app:destination="@id/nav_comentario" />
+        <action
+            android:id="@+id/action_noticiaDetalleFragment_to_nav_noticia"
+            app:destination="@id/nav_noticia" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_juego"
+        android:name="com.peluffo.eltemplodemomo.ui.juego.JuegoFragment"
+        android:label="@string/juego"
+        tools:layout="@layout/fragment_juego" >
+        <action
+            android:id="@+id/action_nav_juego_to_detalleJuego"
+            app:destination="@id/nav_detalleJuego" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_noticiaJuego"
+        android:name="com.peluffo.eltemplodemomo.ui.noticia.NoticiaJuegoFragment"
+        android:label="@string/juegos"
+        tools:layout="@layout/fragment_noticiajuego" >
+        <action
+            android:id="@+id/action_noticiaJuegoFragment_to_nav_noticia"
+            app:destination="@id/nav_noticia" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_detalleJuego"
+        android:name="com.peluffo.eltemplodemomo.ui.juego.JuegoDetalleFragment"
+        android:label="Detalle del Juego"
+        tools:layout="@layout/fragment_juego_detalle" >
+        <action
+            android:id="@+id/action_detalleJuego_to_nav_juego"
+            app:destination="@id/nav_juego" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_juegoCrear"
+        android:name="com.peluffo.eltemplodemomo.ui.juego.JuegoCrearFragment"
+        android:label="Crear Juego"
+        tools:layout="@layout/fragment_juego_crear" />
+    <fragment
+        android:id="@+id/nav_noticiaCrear"
+        android:name="com.peluffo.eltemplodemomo.ui.noticia.NoticiaCrearFragment"
+        android:label="Crear Noticia"
+        tools:layout="@layout/fragment_noticia_crear" />
+</navigation>

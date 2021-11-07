@@ -1,0 +1,58 @@
+package com.peluffo.eltemplodemomo.ui.comentario;
+
+
+import android.app.Application;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
+import com.peluffo.eltemplodemomo.modelo.Comentario;
+import com.peluffo.eltemplodemomo.request.ApiClient;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class ComentarioViewModel extends AndroidViewModel {
+    private MutableLiveData<List<Comentario>> comentarioM;
+    private Context context;
+
+    public ComentarioViewModel(@NonNull Application application) {
+        super(application);
+        this.context = application.getApplicationContext();
+    }
+
+    public LiveData<List<Comentario>> getComentarioM() {
+        if(comentarioM == null){
+            comentarioM = new MutableLiveData<>();
+        }
+        return comentarioM;
+    }
+    public void cargarComentarios(Bundle b){
+        int i = b.getInt("idNoticia");
+        SharedPreferences sp = context.getSharedPreferences("Usuarios", 0);
+        String token = sp.getString("token", "no token");
+        Call<List<Comentario>> call = ApiClient.getMyApiClient().comentsNoticia(token, i);
+        call.enqueue(new Callback<List<Comentario>>() {
+            @Override
+            public void onResponse(Call<List<Comentario>> call, Response<List<Comentario>> response) {
+                if(response.isSuccessful()){
+                    comentarioM.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Comentario>> call, Throwable t) {
+                Log.d("Salida", t.getMessage());
+            }
+        });
+    }
+}
