@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.noticia.NoticiaCrearFragment" >
+    android:background="@drawable/fondo1"
+    tools:context=".ui.noticia.NoticiaCrearFragment">
 
     <EditText
         android:id="@+id/etTituloNotCrear"
@@ -13,6 +14,9 @@
         android:layout_marginTop="80dp"
         android:ems="10"
         android:hint="Titulo"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:background="#B3FBFBFB"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -27,7 +31,10 @@
         android:ems="10"
         android:gravity="start|top"
         android:hint="Cuerpo"
+        android:textColor="#000000"
+        android:background="#B3FBFBFB"
         android:inputType="textMultiLine"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,6 +46,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="Crear"
+        app:icon="@drawable/ic_guardar"
+        app:iconGravity="end"
+        app:iconSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

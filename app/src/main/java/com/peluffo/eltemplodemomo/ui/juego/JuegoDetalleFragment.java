@@ -20,6 +20,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.peluffo.eltemplodemomo.R;
 import com.peluffo.eltemplodemomo.databinding.FragmentJuegoDetalleBinding;
 import com.peluffo.eltemplodemomo.modelo.Juego;
+import com.peluffo.eltemplodemomo.request.ApiClient;
 
 public class JuegoDetalleFragment extends Fragment {
     private JuegoDetalleViewModel detalleViewModel;
@@ -41,11 +42,11 @@ public class JuegoDetalleFragment extends Fragment {
             public void onChanged(Juego juego) {
                 tvTitulo.setText(juego.getTitulo());
                 tvCredor.setText(juego.getCreador().getNickName());
-                tvPrecio.setText(String.valueOf(juego.getPrecio()));
+                tvPrecio.setText("$ " + String.valueOf(juego.getPrecio()));
                 tvDescripcion.setText(juego.getDescripcion());
                 tvRequisitos.setText(juego.getRequisitos());
                 Glide.with(view.getContext())
-                        .load("http://192.168.1.105:5001"+juego.getPortada())
+                        .load(ApiClient.imageURL() + juego.getPortada())
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(ivPortada);
             }

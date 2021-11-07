@@ -4,6 +4,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.annotation.SuppressLint;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -23,6 +24,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.peluffo.eltemplodemomo.R;
 import com.peluffo.eltemplodemomo.databinding.FragmentPerfilBinding;
 import com.peluffo.eltemplodemomo.modelo.Creador;
+import com.peluffo.eltemplodemomo.request.ApiClient;
 
 public class PerfilFragment extends Fragment {
     private Button btEditar;
@@ -36,7 +38,6 @@ public class PerfilFragment extends Fragment {
         binding = FragmentPerfilBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textPerfil;
         final EditText etNickName = binding.etNickName;
         final EditText etNombre = binding.etNombre;
         final EditText etApellido = binding.etApellido;
@@ -46,12 +47,7 @@ public class PerfilFragment extends Fragment {
         final TextView tvAvatar = binding.tvAvatar;
 
         editar();
-        perfilViewModel.getmText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                textView.setText(s);
-            }
-        });
+
         perfilViewModel.getEstadoM().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
@@ -71,10 +67,10 @@ public class PerfilFragment extends Fragment {
                 etEmail.setText(creador.getMail());
                 etContra.setText(creador.getPassword());
                 Glide.with(root.getContext())
-                        .load("http://192.168.1.105:5001"+creador.getAvatar())
+                        .load(ApiClient.imageURL() + creador.getAvatar())
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(ivAvatar);
-                tvAvatar.setText(creador.getAvatar() + "");
+                tvAvatar.setText(creador.getAvatar());
             }
         });
         perfilViewModel.getTextB().observe(getViewLifecycleOwner(), new Observer<String>() {

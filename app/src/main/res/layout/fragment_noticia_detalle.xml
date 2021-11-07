@@ -4,15 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondo1"
     tools:context=".ui.noticia.NoticiaDetalleFragment">
 
     <TextView
         android:id="@+id/tvFechaND"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="68dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="20dp"
+        android:background="#B3FBFBFB"
         android:text="TextView"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -20,10 +25,14 @@
         android:id="@+id/tvTituloND"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="80dp"
+        android:background="#B3FBFBFB"
         android:enabled="false"
         android:hint="Titulo"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,11 +40,15 @@
         android:id="@+id/tvCuerpoND"
         android:layout_width="match_parent"
         android:layout_height="115dp"
-        android:layout_marginTop="50dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="20dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
         android:enabled="false"
+        android:background="#B3FBFBFB"
         android:hint="Cuerpo"
+        android:textColor="#000000"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.428"
@@ -50,6 +63,10 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
         android:text="TextView"
+        android:textColor="#000000"
+        android:background="#B3FBFBFB"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCuerpoND" />
 
@@ -59,7 +76,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="36dp"
+        android:backgroundTint="#B81313"
         android:text="@string/comentarios"
+        android:textStyle="bold"
+        app:cornerRadius="50dp"
+        app:icon="@drawable/ic_comentario"
+        app:iconGravity="textTop"
+        app:iconSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCreadorND" />
 
@@ -69,7 +92,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginTop="36dp"
+        android:backgroundTint="#FFD300"
         android:text="Editar"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:icon="@drawable/ic_editar"
+        app:iconGravity="textTop"
+        app:iconSize="30dp"
+        app:iconTint="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCreadorND" />
 

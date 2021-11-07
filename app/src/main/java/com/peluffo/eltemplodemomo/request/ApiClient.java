@@ -13,8 +13,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.*;
 
 public class ApiClient {
-    private static final String URLBASE ="http://192.168.1.105:5001/api/";
+    private static final String URLBASE ="http://192.168.1.106:5001/api/";
     private static PostInterface postInterface;
+
+    public static String imageURL() {
+        String imageUrl = "http://192.168.1.106:5001";
+        return imageUrl;
+    }
 
     public static PostInterface getMyApiClient(){
         Gson gson = new GsonBuilder().setLenient().create();

@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.peluffo.eltemplodemomo.Login;
+import com.peluffo.eltemplodemomo.R;
 import com.peluffo.eltemplodemomo.databinding.FragmentLogoutBinding;
 
 public class LogoutFragment extends Fragment {
@@ -37,7 +38,7 @@ public class LogoutFragment extends Fragment {
     }
     private void cerrarAplicacion(Context c) {
         new AlertDialog.Builder(c)
-                //.setIcon(R.drawable.ic_logout)
+                .setIcon(R.drawable.ic_logout)
                 .setTitle("¿Realmente desea cerrar sesión?")
                 .setCancelable(false)
                 .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {

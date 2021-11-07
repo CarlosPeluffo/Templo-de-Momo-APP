@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardBackgroundColor="#388E3C"
+    app:cardBackgroundColor="#D8B81313"
     app:cardCornerRadius="20dp"
     app:cardElevation="10dp"
-    app:contentPadding="10dp"
-    app:cardUseCompatPadding="true">
+    app:cardUseCompatPadding="true"
+    app:contentPadding="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -30,6 +30,9 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
             android:text="TextView"
+            android:textColor="#000000"
+            android:background="#B3FBFBFB"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,6 +43,9 @@
             android:layout_marginStart="60dp"
             android:layout_marginTop="4dp"
             android:text="TextView"
+            android:textColor="#000000"
+            android:background="#B3FBFBFB"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,11 +53,13 @@
             android:id="@+id/tvCuerpoComent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
             android:layout_marginStart="60dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
             android:text="TextView"
+            android:textColor="#000000"
+            android:background="#B3FBFBFB"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

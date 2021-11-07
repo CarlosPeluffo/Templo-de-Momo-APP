@@ -6,6 +6,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -23,7 +24,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class PerfilViewModel extends AndroidViewModel {
-    private MutableLiveData<String> mText;
     private MutableLiveData<Boolean> estadoM;
     private MutableLiveData<Creador> creadorM;
     private MutableLiveData<String> textB;
@@ -31,21 +31,14 @@ public class PerfilViewModel extends AndroidViewModel {
 
     public PerfilViewModel(@NonNull Application application) {
         super(application);
-        mText = new MutableLiveData<>();
-        mText.setValue("Perfil");
         this.context = application.getApplicationContext();
     }
-
 
     public LiveData<Boolean> getEstadoM() {
         if(estadoM == null){
             estadoM = new MutableLiveData<>();
         }
         return estadoM;
-    }
-
-    public LiveData<String> getmText() {
-        return mText;
     }
 
     public LiveData<Creador> getCreadorM(){

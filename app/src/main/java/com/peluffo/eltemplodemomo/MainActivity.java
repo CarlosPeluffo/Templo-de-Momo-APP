@@ -24,6 +24,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.peluffo.eltemplodemomo.databinding.ActivityMainBinding;
 import com.peluffo.eltemplodemomo.modelo.Creador;
+import com.peluffo.eltemplodemomo.request.ApiClient;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
-        navigationView.setItemBackgroundResource(R.color.itemBG);
+        navigationView.setItemBackgroundResource(R.color.itemBG2);
         iniciarHeader(navigationView);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -81,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
             public void onChanged(Creador creador) {
                 nickNameH.setText(creador.getNickName());
                 Glide.with(navigationView.getContext())
-                        .load("http://192.168.1.105:5001"+creador.getAvatar())
+                        .load(ApiClient.imageURL() + creador.getAvatar())
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(avatar);
             }

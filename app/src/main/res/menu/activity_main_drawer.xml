@@ -2,7 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_view">
+    tools:showIn="navigation_view"
+    app:theme="@style/MenuA">
 
     <group android:checkableBehavior="single">
         <item
@@ -11,23 +12,23 @@
             android:title="@string/inicio" />
         <item
             android:id="@+id/nav_perfil"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_perfil_3"
             android:title="@string/perfil"/>
         <item
             android:id="@+id/nav_juego"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_juegos"
             android:title="@string/juegos" />
         <item
             android:id="@+id/nav_juegoCrear"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_crear_juego"
             android:title="Crear Juego"/>
         <item
             android:id="@+id/nav_noticiaJuego"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_noticias"
             android:title="@string/noticias" />
         <item
             android:id="@+id/nav_logout"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_logout"
             android:title="@string/logout" />
     </group>
 </menu>

@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.peluffo.eltemplodemomo.R;
 import com.peluffo.eltemplodemomo.modelo.Comentario;
+import com.peluffo.eltemplodemomo.request.ApiClient;
 import com.peluffo.eltemplodemomo.util.Convertidor;
 
 import java.util.List;
@@ -43,7 +44,7 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.Vi
         holder.tvUsuario.setText(c.getUsuario().getNickName());
         holder.tvCuerpo.setText(c.getCuerpo());
         Glide.with(context)
-                .load("http://192.168.1.105:5001"+c.getUsuario().getAvatar())
+                .load(ApiClient.imageURL() + c.getUsuario().getAvatar())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.ivUserAvatar);
     }

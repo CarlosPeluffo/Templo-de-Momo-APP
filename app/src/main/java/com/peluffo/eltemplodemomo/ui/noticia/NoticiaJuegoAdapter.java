@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.peluffo.eltemplodemomo.R;
 import com.peluffo.eltemplodemomo.modelo.Juego;
+import com.peluffo.eltemplodemomo.request.ApiClient;
 import com.peluffo.eltemplodemomo.ui.juego.JuegoAdapter;
 
 import java.util.List;
@@ -44,7 +45,7 @@ public class NoticiaJuegoAdapter extends RecyclerView.Adapter<NoticiaJuegoAdapte
         Juego juego = lista.get(position);
         holder.tvTitulo.setText(juego.getTitulo());
         Glide.with(context)
-                .load("http://192.168.1.105:5001"+juego.getPortada())
+                .load(ApiClient.imageURL()+juego.getPortada())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.ivPortada);
         holder.btCrear.setOnClickListener(new View.OnClickListener() {

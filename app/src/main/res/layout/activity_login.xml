@@ -64,6 +64,8 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:cornerRadius="50dp"
+        app:icon="@drawable/ic_login"
+        app:iconGravity="end"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
