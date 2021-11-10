@@ -1,10 +1,12 @@
 package com.peluffo.eltemplodemomo.ui.noticia;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -22,7 +24,8 @@ import retrofit2.Response;
 
 public class NoticiaViewModel extends AndroidViewModel {
     private MutableLiveData<List<Noticia>> listaM;
-    private Context context;
+    @SuppressLint("StaticFieldLeak")
+    private final Context context;
 
     public NoticiaViewModel(@NonNull Application application) {
         super(application);
@@ -43,14 +46,20 @@ public class NoticiaViewModel extends AndroidViewModel {
         Call<List<Noticia>> call = ApiClient.getMyApiClient().noticiasDeJuego(token, i);
         call.enqueue(new Callback<List<Noticia>>() {
             @Override
-            public void onResponse(Call<List<Noticia>> call, Response<List<Noticia>> response) {
+            public void onResponse(@NonNull Call<List<Noticia>> call, @NonNull Response<List<Noticia>> response) {
                 if(response.isSuccessful()){
-                    listaM.postValue(response.body());
+                    if(response.body() != null && response.body().size() > 0){
+                        listaM.postValue(response.body());
+                    }else{
+                        Toast.makeText(context, "No se encontraron noticias", Toast.LENGTH_LONG).show();
+                    }
+                }else{
+                    Toast.makeText(context, "Ocurrió un error :c", Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<List<Noticia>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<Noticia>> call, @NonNull Throwable t) {
                 Log.d("Salida", t.getMessage());
             }
         });

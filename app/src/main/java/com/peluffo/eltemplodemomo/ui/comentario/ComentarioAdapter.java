@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,12 +17,10 @@ import com.peluffo.eltemplodemomo.modelo.Comentario;
 import com.peluffo.eltemplodemomo.request.ApiClient;
 import com.peluffo.eltemplodemomo.util.Convertidor;
 
-import java.util.List;
-
 public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.ViewHolder> {
-    private List<Comentario> lista;
-    private Context context;
-    private LayoutInflater layoutInflater;
+    private final List<Comentario> lista;
+    private final Context context;
+    private final LayoutInflater layoutInflater;
 
     public ComentarioAdapter(List<Comentario> lista, Context context, LayoutInflater layoutInflater) {
         this.lista = lista;
@@ -54,9 +52,9 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.Vi
         return lista.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvUsuario, tvCuerpo, tvFecha;
-        private ImageView ivUserAvatar;
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        private final TextView tvUsuario, tvCuerpo, tvFecha;
+        private final ImageView ivUserAvatar;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvUsuario = itemView.findViewById(R.id.tvUsuarioComent);

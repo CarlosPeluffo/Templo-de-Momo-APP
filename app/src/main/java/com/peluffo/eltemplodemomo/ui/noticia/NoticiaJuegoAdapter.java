@@ -18,14 +18,13 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.peluffo.eltemplodemomo.R;
 import com.peluffo.eltemplodemomo.modelo.Juego;
 import com.peluffo.eltemplodemomo.request.ApiClient;
-import com.peluffo.eltemplodemomo.ui.juego.JuegoAdapter;
 
 import java.util.List;
 
 public class NoticiaJuegoAdapter extends RecyclerView.Adapter<NoticiaJuegoAdapter.ViewHolder> {
-    private List<Juego> lista;
-    private Context context;
-    private LayoutInflater layoutInflater;
+    private final List<Juego> lista;
+    private final Context context;
+    private final LayoutInflater layoutInflater;
 
     public NoticiaJuegoAdapter(List<Juego> lista, Context context, LayoutInflater layoutInflater) {
         this.lista = lista;
@@ -37,7 +36,7 @@ public class NoticiaJuegoAdapter extends RecyclerView.Adapter<NoticiaJuegoAdapte
     @Override
     public NoticiaJuegoAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = layoutInflater.inflate(R.layout.item_juego, parent, false);
-        return new NoticiaJuegoAdapter.ViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
@@ -48,21 +47,15 @@ public class NoticiaJuegoAdapter extends RecyclerView.Adapter<NoticiaJuegoAdapte
                 .load(ApiClient.imageURL()+juego.getPortada())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.ivPortada);
-        holder.btCrear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putInt("juego", juego.getId());
-                Navigation.findNavController(view).navigate(R.id.nav_noticiaCrear, bundle);
-            }
+        holder.btCrear.setOnClickListener(view -> {
+            Bundle bundle = new Bundle();
+            bundle.putInt("juego", juego.getId());
+            Navigation.findNavController(view).navigate(R.id.nav_noticiaCrear, bundle);
         });
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putInt("juego", juego.getId());
-                Navigation.findNavController(view).navigate(R.id.nav_noticia, bundle);
-            }
+        holder.itemView.setOnClickListener(view -> {
+            Bundle bundle = new Bundle();
+            bundle.putInt("juego", juego.getId());
+            Navigation.findNavController(view).navigate(R.id.nav_noticia, bundle);
         });
     }
 
@@ -71,10 +64,10 @@ public class NoticiaJuegoAdapter extends RecyclerView.Adapter<NoticiaJuegoAdapte
         return lista.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        private ImageView ivPortada;
-        private TextView tvTitulo;
-        private Button btCrear;
+    public static class ViewHolder extends RecyclerView.ViewHolder{
+        private final ImageView ivPortada;
+        private final TextView tvTitulo;
+        private final Button btCrear;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ivPortada = itemView.findViewById(R.id.ivJuegoCard);

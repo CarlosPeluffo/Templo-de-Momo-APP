@@ -1,5 +1,6 @@
 package com.peluffo.eltemplodemomo;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -19,7 +20,8 @@ import retrofit2.Response;
 
 public class MainViewModel extends AndroidViewModel {
     private MutableLiveData<Creador> creadorM;
-    private Context context;
+    @SuppressLint("StaticFieldLeak")
+    private final Context context;
 
     public MainViewModel(@NonNull Application application) {
         super(application);
@@ -38,14 +40,14 @@ public class MainViewModel extends AndroidViewModel {
         Call<Creador> callAct = ApiClient.getMyApiClient().perfil(token);
         callAct.enqueue(new Callback<Creador>() {
             @Override
-            public void onResponse(Call<Creador> call, Response<Creador> response) {
+            public void onResponse(@NonNull Call<Creador> call, @NonNull Response<Creador> response) {
                 if(response.isSuccessful()){
                     creadorM.postValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(Call<Creador> call, Throwable t) {
+            public void onFailure(@NonNull Call<Creador> call, @NonNull Throwable t) {
                 Log.d("Salida", t.getMessage());
             }
         });

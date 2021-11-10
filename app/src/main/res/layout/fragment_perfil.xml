@@ -13,10 +13,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:background="#B3FBFBFB"
-        android:text="NickName"
+        android:text="@string/nickname"
         android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:labelFor="@id/etNickName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.022"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,6 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginTop="10dp"
+        android:autofillHints="yes"
         android:background="#B3FBFBFB"
         android:ems="10"
         android:enabled="false"
@@ -36,7 +38,7 @@
         app:layout_constraintHorizontal_bias="0.039"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
 
     <TextView
         android:id="@+id/textView3"
@@ -44,10 +46,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:background="#B3FBFBFB"
-        android:text="Nombre"
+        android:text="@string/nombre"
         android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:labelFor="@id/etNombre"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.022"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,6 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginTop="10dp"
+        android:autofillHints="yes"
         android:background="#B3FBFBFB"
         android:ems="10"
         android:enabled="false"
@@ -67,7 +71,7 @@
         app:layout_constraintHorizontal_bias="0.039"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
 
     <TextView
         android:id="@+id/textView4"
@@ -75,10 +79,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:background="#B3FBFBFB"
-        android:text="Apellido"
+        android:text="@string/apellido"
         android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:labelFor="@id/etApellido"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.022"
         app:layout_constraintStart_toStartOf="parent"
@@ -89,6 +94,7 @@
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginTop="10dp"
+        android:autofillHints="yes"
         android:background="#B3FBFBFB"
         android:ems="10"
         android:enabled="false"
@@ -98,7 +104,7 @@
         app:layout_constraintHorizontal_bias="0.039"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
 
     <TextView
         android:id="@+id/textView5"
@@ -106,10 +112,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:background="#B3FBFBFB"
-        android:text="E-mail"
+        android:text="@string/e_mail"
         android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:labelFor="@id/etEMail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.021"
         app:layout_constraintStart_toStartOf="parent"
@@ -120,6 +127,7 @@
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginTop="10dp"
+        android:autofillHints="yes"
         android:background="#B3FBFBFB"
         android:ems="10"
         android:enabled="false"
@@ -129,7 +137,7 @@
         app:layout_constraintHorizontal_bias="0.039"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
 
     <EditText
         android:id="@+id/etContra"
@@ -146,7 +154,8 @@
         app:layout_constraintHorizontal_bias="0.039"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etEMail"
-        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+        tools:ignore="LabelFor,SpeakableTextPresentCheck,SpeakableTextPresentCheck"
+        android:autofillHints="no" />
 
     <Button
         android:id="@+id/btEditar"
@@ -155,14 +164,16 @@
         android:layout_marginStart="130dp"
         android:layout_marginTop="15dp"
         android:backgroundTint="#FFD300"
-        android:text="Editar"
+        android:text="@string/editar"
         android:textColor="#000000"
         android:textStyle="bold"
         app:cornerRadius="20dp"
-        app:icon="@drawable/ic_editar"
-        app:iconSize="40dp"
+        android:drawableLeft="@drawable/ic_editar_30"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etContra" />
+        app:layout_constraintTop_toBottomOf="@+id/etContra"
+        app:strokeColor="#00FF0C"
+        app:strokeWidth="3dp"
+        tools:ignore="RtlHardcoded" />
 
     <ImageView
         android:id="@+id/ivAvatar"
@@ -172,7 +183,8 @@
         android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
+        tools:src="@tools:sample/avatars"
+        android:contentDescription="@string/avatar_del_creador" />
 
     <TextView
         android:id="@+id/tvAvatar"
@@ -180,7 +192,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="28dp"
-        android:text="TextView"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivAvatar" />

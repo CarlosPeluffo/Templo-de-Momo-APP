@@ -1,8 +1,8 @@
 package com.peluffo.eltemplodemomo.ui.logout;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -37,26 +37,21 @@ public class LogoutFragment extends Fragment {
         binding = null;
     }
     private void cerrarAplicacion(Context c) {
-        new AlertDialog.Builder(c)
-                .setIcon(R.drawable.ic_logout)
-                .setTitle("¿Realmente desea cerrar sesión?")
-                .setCancelable(false)
-                .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        getActivity().onBackPressed();
-                    }
-                })
-                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        SharedPreferences sp = c.getSharedPreferences("Usuarios", 0);
-                        SharedPreferences.Editor editor = sp.edit();
-                        editor.clear();
-                        Intent intent = new Intent(getActivity(), Login.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
-                    }
-                }).show();
+        AlertDialog.Builder builder = new AlertDialog.Builder(c);
+        builder.setIcon(R.drawable.ic_logout);
+        builder.setTitle("¿Realmente desea cerrar sesión?");
+        builder.setCancelable(false);
+        builder.setNegativeButton(android.R.string.cancel,
+                (dialogInterface, i) -> requireActivity().onBackPressed());
+        builder.setPositiveButton(android.R.string.ok, (dialog, which) -> {
+            SharedPreferences sp = c.getSharedPreferences("Usuarios", 0);
+            @SuppressLint("CommitPrefEdits")
+            SharedPreferences.Editor editor = sp.edit();
+            editor.clear();
+            Intent intent = new Intent(getActivity(), Login.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        });
+        builder.show();
     }
 }

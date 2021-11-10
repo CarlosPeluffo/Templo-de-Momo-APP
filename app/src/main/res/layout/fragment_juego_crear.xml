@@ -12,60 +12,68 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Titulo"
-        android:textColor="#000000"
+        android:autofillHints="yes"
         android:background="#B3FBFBFB"
+        android:ems="10"
+        android:hint="@string/titulo"
         android:inputType="textPersonName"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextContrastCheck" />
 
     <EditText
         android:id="@+id/etDescripJCrear"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="15dp"
+        android:autofillHints="yes"
+        android:background="#B3FBFBFB"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="Descripción"
-        android:textColor="#000000"
-        android:background="#B3FBFBFB"
+        android:hint="@string/descripci_n"
         android:inputType="textMultiLine"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etTituloJCrear" />
+        app:layout_constraintTop_toBottomOf="@+id/etTituloJCrear"
+        tools:ignore="TextContrastCheck" />
 
     <EditText
         android:id="@+id/etRequJCrear"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="15dp"
+        android:autofillHints="yes"
+        android:background="#B3FBFBFB"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="Requisitos"
-        android:textColor="#000000"
-        android:background="#B3FBFBFB"
+        android:hint="@string/requisitos"
         android:inputType="textMultiLine"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etDescripJCrear" />
+        app:layout_constraintTop_toBottomOf="@+id/etDescripJCrear"
+        tools:ignore="TextContrastCheck" />
 
     <EditText
         android:id="@+id/etPrecioJCrear"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="15dp"
-        android:ems="10"
-        android:hint="Precio"
-        android:textColor="#000000"
+        android:autofillHints="yes"
         android:background="#B3FBFBFB"
+        android:ems="10"
+        android:hint="@string/precio"
         android:inputType="numberDecimal"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etRequJCrear" />
+        app:layout_constraintTop_toBottomOf="@+id/etRequJCrear"
+        tools:ignore="TextContrastCheck" />
 
     <ImageView
         android:id="@+id/ivPortadaJCrear"
@@ -74,33 +82,46 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btCargaJCrear"
-        tools:src="@tools:sample/avatars" />
+        tools:src="@tools:sample/avatars"
+        android:contentDescription="@string/portada_del_juego" />
 
     <Button
         android:id="@+id/btCargaJCrear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="Cargar Imagen"
+        android:backgroundTint="#A1B31B"
+        android:text="@string/cargar_imagen"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:cornerRadius="50dp"
         app:icon="@drawable/ic_add_photo"
         app:iconGravity="top"
         app:iconPadding="0dp"
         app:iconSize="30dp"
+        app:iconTint="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPrecioJCrear" />
+        app:layout_constraintTop_toBottomOf="@+id/etPrecioJCrear"
+        app:strokeColor="#00FF0C"
+        app:strokeWidth="3dp" />
 
     <Button
         android:id="@+id/btCrearJuego"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Crear Juego"
+        android:backgroundTint="#001AFF"
+        android:text="@string/crear_juego"
+        android:textStyle="bold"
+        app:cornerRadius="50dp"
         app:icon="@drawable/ic_guardar"
         app:iconGravity="top"
         app:iconPadding="0dp"
         app:iconSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivPortadaJCrear" />
+        app:layout_constraintTop_toBottomOf="@+id/ivPortadaJCrear"
+        app:strokeColor="#00FF0C"
+        app:strokeWidth="3dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

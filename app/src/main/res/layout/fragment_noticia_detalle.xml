@@ -14,7 +14,7 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="20dp"
         android:background="#B3FBFBFB"
-        android:text="TextView"
+        android:text="@string/fecha"
         android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -27,14 +27,17 @@
         android:layout_height="48dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="80dp"
+        android:autofillHints="yes"
         android:background="#B3FBFBFB"
         android:enabled="false"
-        android:hint="Titulo"
+        android:hint="@string/titulo"
+        android:inputType="textPersonName"
         android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/tvCuerpoND"
@@ -47,14 +50,15 @@
         android:textStyle="bold"
         android:enabled="false"
         android:background="#B3FBFBFB"
-        android:hint="Cuerpo"
+        android:hint="@string/cuerpo"
         android:textColor="#000000"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTituloND"
-        tools:ignore="TextContrastCheck" />
+        tools:ignore="TextContrastCheck"
+        android:autofillHints="yes" />
 
     <TextView
         android:id="@+id/tvCreadorND"
@@ -62,7 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
-        android:text="TextView"
+        android:text="@string/creador"
         android:textColor="#000000"
         android:background="#B3FBFBFB"
         android:textSize="18sp"
@@ -84,7 +88,9 @@
         app:iconGravity="textTop"
         app:iconSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCreadorND" />
+        app:layout_constraintTop_toBottomOf="@+id/tvCreadorND"
+        app:strokeColor="#00FF0C"
+        app:strokeWidth="3dp" />
 
     <Button
         android:id="@+id/btEditarNot"
@@ -93,21 +99,20 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="36dp"
         android:backgroundTint="#FFD300"
-        android:text="Editar"
+        android:text="@string/editar"
         android:textColor="#000000"
         android:textStyle="bold"
-        app:icon="@drawable/ic_editar"
-        app:iconGravity="textTop"
-        app:iconSize="30dp"
-        app:iconTint="#000000"
+        app:cornerRadius="30dp"
+        android:drawableTop="@drawable/ic_editar_30"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCreadorND" />
+        app:layout_constraintTop_toBottomOf="@+id/tvCreadorND"
+        app:strokeColor="#00FF0C"
+        app:strokeWidth="3dp" />
 
     <TextView
         android:id="@+id/tvIdNot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

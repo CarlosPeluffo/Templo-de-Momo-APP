@@ -10,7 +10,6 @@ import com.peluffo.eltemplodemomo.modelo.Juego;
 
 public class JuegoDetalleViewModel extends ViewModel {
     private MutableLiveData<Juego> juegoM;
-    private Juego juego;
 
     public LiveData<Juego> getJuegoM() {
         if(juegoM == null){
@@ -19,7 +18,7 @@ public class JuegoDetalleViewModel extends ViewModel {
         return juegoM;
     }
     public void cargar(Bundle bundle){
-        juego = (Juego) bundle.getSerializable("juego");
+        Juego juego = (Juego) bundle.getSerializable("juego");
         juegoM.setValue(juego);
     }
 }

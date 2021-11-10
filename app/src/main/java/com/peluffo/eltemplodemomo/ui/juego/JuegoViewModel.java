@@ -1,10 +1,12 @@
 package com.peluffo.eltemplodemomo.ui.juego;
 
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -22,7 +24,8 @@ import retrofit2.Response;
 
 public class JuegoViewModel extends AndroidViewModel {
     private MutableLiveData<List<Juego>> lista;
-    private Context context;
+    @SuppressLint("StaticFieldLeak")
+    private final Context context;
 
     public JuegoViewModel(@NonNull Application application) {
         super(application);
@@ -41,14 +44,20 @@ public class JuegoViewModel extends AndroidViewModel {
         Call<List<Juego>> call = ApiClient.getMyApiClient().juegos(token);
         call.enqueue(new Callback<List<Juego>>() {
             @Override
-            public void onResponse(Call<List<Juego>> call, Response<List<Juego>> response) {
+            public void onResponse(@NonNull Call<List<Juego>> call, @NonNull Response<List<Juego>> response) {
                 if(response.isSuccessful()){
-                    lista.postValue(response.body());
+                    if(response.body() != null && response.body().size() > 0){
+                        lista.postValue(response.body());
+                    }else{
+                        Toast.makeText(context, "No se encontraron juegos", Toast.LENGTH_LONG).show();
+                    }
+                }else{
+                    Toast.makeText(context, "Ocurrió un error :c", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<List<Juego>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<Juego>> call, @NonNull Throwable t) {
                 Log.d("Salida", t.getMessage());
             }
         });

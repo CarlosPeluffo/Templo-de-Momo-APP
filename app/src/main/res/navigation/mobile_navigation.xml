@@ -56,7 +56,7 @@
     <fragment
         android:id="@+id/nav_juego"
         android:name="com.peluffo.eltemplodemomo.ui.juego.JuegoFragment"
-        android:label="@string/juego"
+        android:label="@string/juegos"
         tools:layout="@layout/fragment_juego" >
         <action
             android:id="@+id/action_nav_juego_to_detalleJuego"

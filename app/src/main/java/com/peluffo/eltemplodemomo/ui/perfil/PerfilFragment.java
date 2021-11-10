@@ -1,10 +1,11 @@
 package com.peluffo.eltemplodemomo.ui.perfil;
 
-import androidx.lifecycle.Observer;
+import androidx.annotation.RequiresApi;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.annotation.SuppressLint;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -21,7 +22,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.peluffo.eltemplodemomo.R;
 import com.peluffo.eltemplodemomo.databinding.FragmentPerfilBinding;
 import com.peluffo.eltemplodemomo.modelo.Creador;
 import com.peluffo.eltemplodemomo.request.ApiClient;
@@ -31,6 +31,7 @@ public class PerfilFragment extends Fragment {
     private PerfilViewModel perfilViewModel;
     private FragmentPerfilBinding binding;
 
+    @RequiresApi(api = Build.VERSION_CODES.S)
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -48,36 +49,27 @@ public class PerfilFragment extends Fragment {
 
         editar();
 
-        perfilViewModel.getEstadoM().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                etNickName.setEnabled(aBoolean);
-                etNombre.setEnabled(aBoolean);
-                etApellido.setEnabled(aBoolean);
-            }
+        perfilViewModel.getEstadoM().observe(getViewLifecycleOwner(), aBoolean -> {
+            etNickName.setEnabled(aBoolean);
+            etNombre.setEnabled(aBoolean);
+            etApellido.setEnabled(aBoolean);
         });
-        perfilViewModel.getCreadorM().observe(getViewLifecycleOwner(), new Observer<Creador>() {
-            @SuppressLint("ResourceType")
-            @Override
-            public void onChanged(Creador creador) {
-
-                etNickName.setText(creador.getNickName());
-                etNombre.setText(creador.getNombre());
-                etApellido.setText(creador.getApellido());
-                etEmail.setText(creador.getMail());
-                etContra.setText(creador.getPassword());
-                Glide.with(root.getContext())
-                        .load(ApiClient.imageURL() + creador.getAvatar())
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .into(ivAvatar);
-                tvAvatar.setText(creador.getAvatar());
-            }
+        perfilViewModel.getCreadorM().observe(getViewLifecycleOwner(), creador -> {
+            etNickName.setText(creador.getNickName());
+            etNombre.setText(creador.getNombre());
+            etApellido.setText(creador.getApellido());
+            etEmail.setText(creador.getMail());
+            etContra.setText(creador.getPassword());
+            Glide.with(root.getContext())
+                    .load(ApiClient.imageURL() + creador.getAvatar())
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(ivAvatar);
+            tvAvatar.setText(creador.getAvatar());
         });
-        perfilViewModel.getTextB().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                btEditar.setText(s);
-            }
+        perfilViewModel.getTextB().observe(getViewLifecycleOwner(), s -> btEditar.setText(s));
+        perfilViewModel.getDrawableM().observe(getViewLifecycleOwner(), drawable -> {
+            Drawable[] dr = btEditar.getCompoundDrawables();
+            ((BitmapDrawable)dr[0]).setBitmap(((BitmapDrawable)drawable).getBitmap());
         });
         perfilViewModel.cargarCreador();
         return root;
@@ -97,21 +89,18 @@ public class PerfilFragment extends Fragment {
         final EditText etEmail = binding.etEMail;
         final EditText etContra = binding.etContra;
         final TextView tvAvatar = binding.tvAvatar;
-        btEditar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String texto = ((Button)view).getText().toString();
-                Creador c = new Creador(
-                        etNickName.getText().toString(),
-                        etEmail.getText().toString(),
-                        etContra.getText().toString(),
-                        etNombre.getText().toString(),
-                        etApellido.getText().toString(),
-                        tvAvatar.getText().toString()
+        btEditar.setOnClickListener(view -> {
+            String texto = ((Button)view).getText().toString();
+            Creador c = new Creador(
+                    etNickName.getText().toString(),
+                    etEmail.getText().toString(),
+                    etContra.getText().toString(),
+                    etNombre.getText().toString(),
+                    etApellido.getText().toString(),
+                    tvAvatar.getText().toString()
 
-                );
-                perfilViewModel.cambiarEstado(texto, c);
-            }
+            );
+            perfilViewModel.cambiarEstado(texto, c);
         });
     }
 }

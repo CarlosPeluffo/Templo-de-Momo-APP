@@ -1,6 +1,5 @@
 package com.peluffo.eltemplodemomo.ui.noticia;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,13 +17,11 @@ import com.peluffo.eltemplodemomo.modelo.Noticia;
 import java.util.List;
 
 public class NoticiaAdapter extends RecyclerView.Adapter<NoticiaAdapter.ViewHolder> {
-    private List<Noticia> lista;
-    private Context context;
-    private LayoutInflater layoutInflater;
+    private final List<Noticia> lista;
+    private final LayoutInflater layoutInflater;
 
-    public NoticiaAdapter(List<Noticia> lista, Context context, LayoutInflater layoutInflater) {
+    public NoticiaAdapter(List<Noticia> lista, LayoutInflater layoutInflater) {
         this.lista = lista;
-        this.context = context;
         this.layoutInflater = layoutInflater;
     }
 
@@ -32,7 +29,7 @@ public class NoticiaAdapter extends RecyclerView.Adapter<NoticiaAdapter.ViewHold
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = layoutInflater.inflate(R.layout.item_noticia, parent, false);
-        return new NoticiaAdapter.ViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
@@ -40,13 +37,10 @@ public class NoticiaAdapter extends RecyclerView.Adapter<NoticiaAdapter.ViewHold
         Noticia noticia = lista.get(position);
         holder.titulo.setText(noticia.getTitulo());
         holder.fecha.setText(Convertidor.fecha(noticia.getFecha()));
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("noticia", noticia );
-                Navigation.findNavController(view).navigate(R.id.nav_noticiaDetalle, bundle);
-            }
+        holder.itemView.setOnClickListener(view -> {
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("noticia", noticia );
+            Navigation.findNavController(view).navigate(R.id.nav_noticiaDetalle, bundle);
         });
     }
 
@@ -55,8 +49,8 @@ public class NoticiaAdapter extends RecyclerView.Adapter<NoticiaAdapter.ViewHold
         return lista.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView fecha, titulo;
+    public static class ViewHolder extends RecyclerView.ViewHolder{
+        private final TextView fecha, titulo;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             fecha = itemView.findViewById(R.id.tvFechaCN);

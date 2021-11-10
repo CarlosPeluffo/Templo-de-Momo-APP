@@ -4,33 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    app:cardBackgroundColor="#388E3C"
+    app:cardBackgroundColor="#000000"
     app:cardCornerRadius="20dp"
     app:cardElevation="10dp"
-    app:contentPadding="10dp"
-    app:cardUseCompatPadding="true">
+    app:cardUseCompatPadding="true"
+    app:contentPadding="10dp">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/maxresdefault">
 
         <ImageView
             android:id="@+id/ivJuegoCard"
             android:layout_width="130dp"
             android:layout_height="120dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="25dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@tools:sample/avatars"
+            android:contentDescription="@string/portada_del_juego" />
 
         <TextView
             android:id="@+id/tvTituloCJ"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="TextView"
+            android:text="@string/titulo"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -43,14 +45,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Crear Noticia "
+            android:backgroundTint="#99C1C8C5"
+            android:text="@string/crear_noticia"
+            android:textColor="#000000"
+            android:textStyle="bold"
             app:icon="@drawable/ic_crear_noticia"
             app:iconGravity="textEnd"
             app:iconPadding="0dp"
             app:iconSize="20dp"
+            app:iconTint="#000000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTituloCJ" />
+            app:layout_constraintTop_toBottomOf="@+id/tvTituloCJ"
+            app:strokeColor="#00FF0C"
+            app:strokeWidth="3dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,11 +1,13 @@
 package com.peluffo.eltemplodemomo.ui.comentario;
 
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -23,7 +25,8 @@ import retrofit2.Response;
 
 public class ComentarioViewModel extends AndroidViewModel {
     private MutableLiveData<List<Comentario>> comentarioM;
-    private Context context;
+    @SuppressLint("StaticFieldLeak")
+    private final Context context;
 
     public ComentarioViewModel(@NonNull Application application) {
         super(application);
@@ -43,14 +46,20 @@ public class ComentarioViewModel extends AndroidViewModel {
         Call<List<Comentario>> call = ApiClient.getMyApiClient().comentsNoticia(token, i);
         call.enqueue(new Callback<List<Comentario>>() {
             @Override
-            public void onResponse(Call<List<Comentario>> call, Response<List<Comentario>> response) {
+            public void onResponse(@NonNull Call<List<Comentario>> call, @NonNull Response<List<Comentario>> response) {
                 if(response.isSuccessful()){
-                    comentarioM.postValue(response.body());
+                    if(response.body() !=null && response.body().size() > 0) {
+                        comentarioM.postValue(response.body());
+                    }else{
+                        Toast.makeText(context, "No se encontraron comentarios", Toast.LENGTH_LONG).show();
+                    }
+                }else{
+                    Toast.makeText(context,"Ocurrió un error :c", Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<List<Comentario>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<Comentario>> call, @NonNull Throwable t) {
                 Log.d("Salida", t.getMessage());
             }
         });

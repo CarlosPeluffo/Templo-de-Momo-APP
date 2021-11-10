@@ -22,9 +22,9 @@ import com.peluffo.eltemplodemomo.request.ApiClient;
 import java.util.List;
 
 public class JuegoAdapter extends RecyclerView.Adapter<JuegoAdapter.ViewHolder> {
-    private List<Juego> lista ;
-    private Context context;
-    private LayoutInflater layoutInflater;
+    private final List<Juego> lista ;
+    private final Context context;
+    private final LayoutInflater layoutInflater;
 
     public JuegoAdapter(List<Juego> lista, Context context, LayoutInflater layoutInflater) {
         this.lista = lista;
@@ -47,21 +47,15 @@ public class JuegoAdapter extends RecyclerView.Adapter<JuegoAdapter.ViewHolder> 
                 .load(ApiClient.imageURL()+juego.getPortada())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.ivPortada);
-        holder.btCrear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putInt("juego", juego.getId());
-                Navigation.findNavController(view).navigate(R.id.nav_noticiaCrear, bundle);
-            }
+        holder.btCrear.setOnClickListener(view -> {
+            Bundle bundle = new Bundle();
+            bundle.putInt("juego", juego.getId());
+            Navigation.findNavController(view).navigate(R.id.nav_noticiaCrear, bundle);
         });
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("juego", juego );
-                Navigation.findNavController(view).navigate(R.id.nav_detalleJuego, bundle);
-            }
+        holder.itemView.setOnClickListener(view -> {
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("juego", juego );
+            Navigation.findNavController(view).navigate(R.id.nav_detalleJuego, bundle);
         });
     }
 
@@ -70,10 +64,10 @@ public class JuegoAdapter extends RecyclerView.Adapter<JuegoAdapter.ViewHolder> 
         return lista.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        private ImageView ivPortada;
-        private TextView tvTitulo;
-        private Button btCrear;
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        private final ImageView ivPortada;
+        private final TextView tvTitulo;
+        private final Button btCrear;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ivPortada = itemView.findViewById(R.id.ivJuegoCard);

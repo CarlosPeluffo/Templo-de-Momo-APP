@@ -1,7 +1,6 @@
 package com.peluffo.eltemplodemomo;
 
 import android.annotation.SuppressLint;
-import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
@@ -10,10 +9,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -23,13 +20,11 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.peluffo.eltemplodemomo.databinding.ActivityMainBinding;
-import com.peluffo.eltemplodemomo.modelo.Creador;
 import com.peluffo.eltemplodemomo.request.ApiClient;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    private ActivityMainBinding binding;
     private MainViewModel viewModel;
 
     @SuppressLint("ResourceType")
@@ -37,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         viewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(MainViewModel.class);
@@ -77,15 +72,12 @@ public class MainActivity extends AppCompatActivity {
         View header = navigationView.getHeaderView(0);
         ImageView avatar = header.findViewById(R.id.avatarH);
         TextView nickNameH = header.findViewById(R.id.nickNameH);
-        viewModel.getCreadorM().observe(this, new Observer<Creador>() {
-            @Override
-            public void onChanged(Creador creador) {
-                nickNameH.setText(creador.getNickName());
-                Glide.with(navigationView.getContext())
-                        .load(ApiClient.imageURL() + creador.getAvatar())
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .into(avatar);
-            }
+        viewModel.getCreadorM().observe(this, creador -> {
+            nickNameH.setText(creador.getNickName());
+            Glide.with(navigationView.getContext())
+                    .load(ApiClient.imageURL() + creador.getAvatar())
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(avatar);
         });
         viewModel.cargarCreador();
     }

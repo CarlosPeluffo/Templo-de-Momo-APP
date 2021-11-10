@@ -4,17 +4,19 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Marhta Bazan/Desktop/Tecnicatura de Software/Dispositivos Moviles/Proyectos/ElTemplodeMomo/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/Marhta Bazan/Desktop/Tecnicatura de Software/Dispositivos Moviles/Proyectos/ElTemplodeMomo/app/src/main/res/drawable/circular_progress_bar.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/Marhta Bazan/Desktop/Tecnicatura de Software/Dispositivos Moviles/Proyectos/ElTemplodeMomo/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/Marhta Bazan/Desktop/Tecnicatura de Software/Dispositivos Moviles/Proyectos/ElTemplodeMomo/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/Marhta Bazan/Desktop/Tecnicatura de Software/Dispositivos Moviles/Proyectos/ElTemplodeMomo/app/src/main/res/layout/activity_splash_screen.xml" value="0.25" />
         <entry key="..\:/Users/Marhta Bazan/Desktop/Tecnicatura de Software/Dispositivos Moviles/Proyectos/ElTemplodeMomo/app/src/main/res/layout/app_bar_main.xml" value="0.18" />
-        <entry key="..\:/Users/Marhta Bazan/Desktop/Tecnicatura de Software/Dispositivos Moviles/Proyectos/ElTemplodeMomo/app/src/main/res/layout/content_main.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/Marhta Bazan/Desktop/Tecnicatura de Software/Dispositivos Moviles/Proyectos/ElTemplodeMomo/app/src/main/res/layout/content_main.xml" value="0.15" />
         <entry key="..\:/Users/Marhta Bazan/Desktop/Tecnicatura de Software/Dispositivos Moviles/Proyectos/ElTemplodeMomo/app/src/main/res/layout/fragment_comentario.xml" value="0.1" />
         <entry key="..\:/Users/Marhta Bazan/Desktop/Tecnicatura de Software/Dispositivos Moviles/Proyectos/ElTemplodeMomo/app/src/main/res/layout/fragment_detalle_juego.xml" value="0.15885416666666666" />
         <entry key="..\:/Users/Marhta Bazan/Desktop/Tecnicatura de Software/Dispositivos Moviles/Proyectos/ElTemplodeMomo/app/src/main/res/layout/fragment_detalle_juegos.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/Marhta Bazan/Desktop/Tecnicatura de Software/Dispositivos Moviles/Proyectos/ElTemplodeMomo/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/Users/Marhta Bazan/Desktop/Tecnicatura de Software/Dispositivos Moviles/Proyectos/ElTemplodeMomo/app/src/main/res/layout/fragment_juego.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/Marhta Bazan/Desktop/Tecnicatura de Software/Dispositivos Moviles/Proyectos/ElTemplodeMomo/app/src/main/res/layout/fragment_juego_crear.xml" value="0.5" />
-        <entry key="..\:/Users/Marhta Bazan/Desktop/Tecnicatura de Software/Dispositivos Moviles/Proyectos/ElTemplodeMomo/app/src/main/res/layout/fragment_juego_detalle.xml" value="0.5" />
+        <entry key="..\:/Users/Marhta Bazan/Desktop/Tecnicatura de Software/Dispositivos Moviles/Proyectos/ElTemplodeMomo/app/src/main/res/layout/fragment_juego_detalle.xml" value="0.4365482233502538" />
         <entry key="..\:/Users/Marhta Bazan/Desktop/Tecnicatura de Software/Dispositivos Moviles/Proyectos/ElTemplodeMomo/app/src/main/res/layout/fragment_logout.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/Marhta Bazan/Desktop/Tecnicatura de Software/Dispositivos Moviles/Proyectos/ElTemplodeMomo/app/src/main/res/layout/fragment_noticia.xml" value="0.22" />
         <entry key="..\:/Users/Marhta Bazan/Desktop/Tecnicatura de Software/Dispositivos Moviles/Proyectos/ElTemplodeMomo/app/src/main/res/layout/fragment_noticia_crear.xml" value="0.33" />
@@ -22,7 +24,7 @@
         <entry key="..\:/Users/Marhta Bazan/Desktop/Tecnicatura de Software/Dispositivos Moviles/Proyectos/ElTemplodeMomo/app/src/main/res/layout/fragment_noticiajuego.xml" value="0.1" />
         <entry key="..\:/Users/Marhta Bazan/Desktop/Tecnicatura de Software/Dispositivos Moviles/Proyectos/ElTemplodeMomo/app/src/main/res/layout/fragment_perfil.xml" value="0.5" />
         <entry key="..\:/Users/Marhta Bazan/Desktop/Tecnicatura de Software/Dispositivos Moviles/Proyectos/ElTemplodeMomo/app/src/main/res/layout/item_comentario.xml" value="0.4846153846153846" />
-        <entry key="..\:/Users/Marhta Bazan/Desktop/Tecnicatura de Software/Dispositivos Moviles/Proyectos/ElTemplodeMomo/app/src/main/res/layout/item_juego.xml" value="0.6096491228070176" />
+        <entry key="..\:/Users/Marhta Bazan/Desktop/Tecnicatura de Software/Dispositivos Moviles/Proyectos/ElTemplodeMomo/app/src/main/res/layout/item_juego.xml" value="0.4911660777385159" />
         <entry key="..\:/Users/Marhta Bazan/Desktop/Tecnicatura de Software/Dispositivos Moviles/Proyectos/ElTemplodeMomo/app/src/main/res/layout/item_noticia.xml" value="0.5" />
         <entry key="..\:/Users/Marhta Bazan/Desktop/Tecnicatura de Software/Dispositivos Moviles/Proyectos/ElTemplodeMomo/app/src/main/res/layout/main_activity.xml" value="0.1" />
         <entry key="..\:/Users/Marhta Bazan/Desktop/Tecnicatura de Software/Dispositivos Moviles/Proyectos/ElTemplodeMomo/app/src/main/res/layout/nav_header_main.xml" value="0.5" />

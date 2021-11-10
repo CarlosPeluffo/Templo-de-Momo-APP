@@ -1,8 +1,8 @@
 package com.peluffo.eltemplodemomo.ui.juego;
 
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,18 +17,17 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.peluffo.eltemplodemomo.R;
 import com.peluffo.eltemplodemomo.databinding.FragmentJuegoDetalleBinding;
 import com.peluffo.eltemplodemomo.modelo.Juego;
 import com.peluffo.eltemplodemomo.request.ApiClient;
 
 public class JuegoDetalleFragment extends Fragment {
-    private JuegoDetalleViewModel detalleViewModel;
     private FragmentJuegoDetalleBinding binding;
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        detalleViewModel = new ViewModelProvider(this).get(JuegoDetalleViewModel.class);
+        JuegoDetalleViewModel detalleViewModel = new ViewModelProvider(this).get(JuegoDetalleViewModel.class);
         binding = FragmentJuegoDetalleBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
         final TextView tvTitulo = binding.tvTituloJD;
@@ -37,20 +36,18 @@ public class JuegoDetalleFragment extends Fragment {
         final TextView tvDescripcion = binding.tvDescripJD;
         final TextView tvRequisitos = binding.tvReqJD;
         final ImageView ivPortada = binding.ivPortadaJD;
-        detalleViewModel.getJuegoM().observe(getViewLifecycleOwner(), new Observer<Juego>() {
-            @Override
-            public void onChanged(Juego juego) {
-                tvTitulo.setText(juego.getTitulo());
-                tvCredor.setText(juego.getCreador().getNickName());
-                tvPrecio.setText("$ " + String.valueOf(juego.getPrecio()));
-                tvDescripcion.setText(juego.getDescripcion());
-                tvRequisitos.setText(juego.getRequisitos());
-                Glide.with(view.getContext())
-                        .load(ApiClient.imageURL() + juego.getPortada())
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .into(ivPortada);
-            }
+        detalleViewModel.getJuegoM().observe(getViewLifecycleOwner(), juego -> {
+            tvTitulo.setText(juego.getTitulo());
+            tvCredor.setText(juego.getCreador().getNickName());
+            tvPrecio.setText("$ " + juego.getPrecio());
+            tvDescripcion.setText(juego.getDescripcion());
+            tvRequisitos.setText(juego.getRequisitos());
+            Glide.with(view.getContext())
+                    .load(ApiClient.imageURL() + juego.getPortada())
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(ivPortada);
         });
+        assert getArguments() != null;
         detalleViewModel.cargar(getArguments());
         return view;
     }

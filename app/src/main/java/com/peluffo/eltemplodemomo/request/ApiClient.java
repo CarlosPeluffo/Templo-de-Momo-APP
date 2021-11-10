@@ -14,11 +14,9 @@ import retrofit2.http.*;
 
 public class ApiClient {
     private static final String URLBASE ="http://192.168.1.106:5001/api/";
-    private static PostInterface postInterface;
 
     public static String imageURL() {
-        String imageUrl = "http://192.168.1.106:5001";
-        return imageUrl;
+        return "http://192.168.1.106:5001";
     }
 
     public static PostInterface getMyApiClient(){
@@ -27,7 +25,7 @@ public class ApiClient {
                 .baseUrl(URLBASE)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
-        postInterface = retrofit.create(PostInterface.class);
+        PostInterface postInterface = retrofit.create(PostInterface.class);
         Log.d("Salida", retrofit.baseUrl().toString());
         return postInterface;
     }
@@ -45,17 +43,11 @@ public class ApiClient {
         @GET("Juegos")
         Call<List<Juego>> juegos(@Header("Authorization") String token);
 
-        @GET("Juegos/{id}")
-        Call<Juego> unJuego(@Header("Authorization") String token, @Path("id") int idIn);
-
         @POST("Juegos")
         Call<Juego> crearJuego(@Header("Authorization") String token, @Body Juego juego);
 
         @GET("Noticias/{id}")
         Call<List<Noticia>> noticiasDeJuego(@Header("Authorization") String token, @Path("id") int idIn);
-
-        @GET("Noticias/Detalles/{id}")
-        Call<Noticia> unaNoticia(@Header("Authorization") String token, @Path("id") int idNot);
 
         @POST("Noticias")
         Call<Noticia> crearNoticia(@Header("Authorization") String token, @Body Noticia noticia);

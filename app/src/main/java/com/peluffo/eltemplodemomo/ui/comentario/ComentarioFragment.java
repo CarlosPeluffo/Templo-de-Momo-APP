@@ -24,13 +24,12 @@ import java.util.List;
 public class ComentarioFragment extends Fragment {
     private RecyclerView rvComentario;
     private ComentarioAdapter adapter;
-    private ComentarioViewModel comentarioViewModel;
     private FragmentComentarioBinding binding;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        comentarioViewModel = new ViewModelProvider(this).get(ComentarioViewModel.class);
+        ComentarioViewModel comentarioViewModel = new ViewModelProvider(this).get(ComentarioViewModel.class);
         binding = FragmentComentarioBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
         rvComentario = binding.rvComentarios;
@@ -38,14 +37,12 @@ public class ComentarioFragment extends Fragment {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 1, LinearLayoutManager.VERTICAL, false);
         rvComentario.setLayoutManager(gridLayoutManager);
 
-        comentarioViewModel.getComentarioM().observe(getViewLifecycleOwner(), new Observer<List<Comentario>>() {
-            @Override
-            public void onChanged(List<Comentario> comentarios) {
-                adapter = new ComentarioAdapter(comentarios, view.getContext(), inflater);
-                rvComentario.setAdapter(adapter);
-            }
+        comentarioViewModel.getComentarioM().observe(getViewLifecycleOwner(), comentarios -> {
+            adapter = new ComentarioAdapter(comentarios, view.getContext(), inflater);
+            rvComentario.setAdapter(adapter);
         });
 
+        assert getArguments() != null;
         comentarioViewModel.cargarComentarios(getArguments());
         return view;
     }
